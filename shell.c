@@ -2,50 +2,54 @@
 
 #include "main.h"
 
-/**
- * main - program that mimic a super simple shell
- * Return: 0
- */
-
 int main(void)
 {
 	int status;
-	char *path = NULL;
-	char *args[] = {path, NULL};
-	size_t pathSize = 0;
+	char *line = NULL;
+	char *args[2] = {NULL, NULL};
+	size_t lineSize = 0;
 	ssize_t bytesRead;
 	pid_t childPid;
 
 	while (1)
 	{
 		printf("$ ");
-		bytesRead = getline(&path, &pathSize, stdin);
+		bytesRead = getline(&line, &lineSize, stdin);
 		if (bytesRead == -1)
 		{
-			perror("Error");
 			if (feof(stdin))
-				break;
+			{
+				printf("\n");
+				exit(EXIT_SUCCESS);
+			}
+			perror("Error");
+			continue;
 		}
-		path[bytesRead - 1] = '\0';
+		line[bytesRead - 1] = '\0';
 
+		args[0] = line;
+		
 		childPid = fork();
 		if (childPid == -1)
 		{
 			perror("fork");
-			exit(EXIT_FAILURE);
+			continue;
 		}
 		else if (childPid == 0)
 		{
-			if (execve(path, args, NULL) == -1)
+			if (execve(args[0], args, environ) == -1)
 			{
-				perror("execve");
-				free(path);
+				fprintf(stderr, "%s: command not found\n", args[0]);
 				exit(EXIT_FAILURE);
 			}
 		}
 		else
+		{
 			wait(&status);
+			if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+				continue;
+		}
 	}
-	free(path);
+	free(line);
 	return (0);
 }
