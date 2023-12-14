@@ -2,11 +2,15 @@
 
 #include "main.h"
 
+#define MAX_ARGS 64
+
+extern char **environ;
+
 int main(void)
 {
-	int status;
-	char *line = NULL;
-	char *args[2] = {NULL, NULL};
+	int status, i;
+	char *line = NULL, *token;
+	char *args[MAX_ARGS];
 	size_t lineSize = 0;
 	ssize_t bytesRead;
 	pid_t childPid;
@@ -27,8 +31,17 @@ int main(void)
 		}
 		line[bytesRead - 1] = '\0';
 
-		args[0] = line;
-		
+
+		token = strtok(line, " ");
+		i = 0;
+		while (token != NULL && i < MAX_ARGS - 1)
+		{
+			args[i] = token;
+			i++;
+			token = strtok(NULL, " ");
+		}
+		args[i] = NULL;
+
 		childPid = fork();
 		if (childPid == -1)
 		{
