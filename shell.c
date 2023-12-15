@@ -20,8 +20,8 @@ int main(void)
 		if (isatty(STDIN_FILENO))
 		{
 			printf("$ ");
-			bytesRead = getline(&line, &lineSize, stdin);
 		}
+			bytesRead = getline(&line, &lineSize, stdin);
 		if (bytesRead == -1)
 		{
 			if (feof(stdin))
@@ -33,7 +33,6 @@ int main(void)
 			continue;
 		}
 		line[bytesRead - 1] = '\0';
-
 
 		token = strtok(line, " ");
 		i = 0;
@@ -65,7 +64,7 @@ int main(void)
 			if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
 				continue;
 		}
-		free(line);
-		return (0);
 	}
+	free(line);
+	return (0);
 }
