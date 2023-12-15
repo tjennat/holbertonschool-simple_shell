@@ -23,9 +23,14 @@ int main(void)
 		if (bytesRead == -1)
 		{
 			if (feof(stdin))
+			{
+				free(line);
 				exit(EXIT_SUCCESS);
+			}	
+			free(line);	
 			perror("Error");
 			continue;
+
 		}
 		line[bytesRead - 1] = '\0';
 
