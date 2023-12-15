@@ -21,14 +21,11 @@ int main(void)
 		{
 			printf("$ ");
 		}
-			bytesRead = getline(&line, &lineSize, stdin);
+		bytesRead = getline(&line, &lineSize, stdin);
 		if (bytesRead == -1)
 		{
-			if (feof(stdin))
-			{
-				printf("\n");
+			if (feof(stdin))	
 				exit(EXIT_SUCCESS);
-			}
 			perror("Error");
 			continue;
 		}
