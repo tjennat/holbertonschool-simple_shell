@@ -4,7 +4,6 @@
  *
  *
  */
-extern char **environ;
 
 void exec(char **args)
 {
@@ -25,4 +24,5 @@ void exec(char **args)
 	}
 	else
 		wait(&status);
+	free(args[0]);
 }
