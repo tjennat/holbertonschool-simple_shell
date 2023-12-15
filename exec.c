@@ -7,6 +7,7 @@
 
 void exec(char **args)
 {
+	char *line = NULL;
 	int status;
 	pid_t childPid;
 
@@ -19,10 +20,11 @@ void exec(char **args)
 		if (execve(args[0], args, environ) == -1)
 		{
 			fprintf(stderr, "%s: command not found\n", args[0]);
+			free(line);
+			free(args[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 		wait(&status);
-	free(args[0]);
 }
