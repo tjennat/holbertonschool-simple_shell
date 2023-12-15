@@ -9,5 +9,6 @@
 #include <sys/types.h>
 
 void exec(char **args);
+extern char **environ;
 
 #endif
