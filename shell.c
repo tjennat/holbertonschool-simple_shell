@@ -7,8 +7,7 @@
 
 int main(void)
 {
-	int i;
-	char *line = NULL, *token;
+	char *line = NULL;
 	char *args[MAX_ARGS];
 	size_t lineSize = 0;
 	ssize_t bytesRead;
@@ -18,7 +17,9 @@ int main(void)
 		if (isatty(STDIN_FILENO))
 		{
 			printf("$ ");
+			fflush(stdout);
 		}
+
 		bytesRead = getline(&line, &lineSize, stdin);
 		if (bytesRead == -1)
 		{
@@ -34,15 +35,7 @@ int main(void)
 		}
 		line[bytesRead - 1] = '\0';
 
-		token = strtok(line, " ");
-		i = 0;
-		while (token != NULL && i < MAX_ARGS - 1)
-		{
-			args[i] = token;
-			i++;
-			token = strtok(NULL, " ");
-		}
-		args[i] = NULL;
+		tokenize(line, args, MAX_ARGS);
 		exec(args);
 	}
 	free(line);
