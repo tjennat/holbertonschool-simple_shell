@@ -7,8 +7,7 @@
 
 int main(void)
 {
-	int i;
-	char *line = NULL, *token;
+	char *line = NULL;
 	char *args[MAX_ARGS];
 	size_t lineSize = 0;
 	ssize_t bytesRead;
