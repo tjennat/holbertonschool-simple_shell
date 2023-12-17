@@ -10,5 +10,6 @@
 
 void exec(char **args);
 extern char **environ;
+void tokenize(char *line, char *args[], size_t max_args);
 
 #endif
