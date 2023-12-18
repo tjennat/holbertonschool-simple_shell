@@ -14,4 +14,3 @@ void tokenize(char *line, char *args[], size_t max_args)
     }
     args[i] = NULL;
 }
-
