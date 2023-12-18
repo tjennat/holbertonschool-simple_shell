@@ -1,9 +1,5 @@
 #define _GNU_SOURCE
-
 #include "main.h"
-
-#define MAX_ARGS 64
-
 
 int main(void)
 {
@@ -21,14 +17,13 @@ int main(void)
 		}
 
 		bytesRead = getline(&line, &lineSize, stdin);
-		if (bytesRead == -1)
+		if (bytesRead == EOF)
 		{
-			if (feof(stdin))
 			{
 				free(line);
 				exit(EXIT_SUCCESS);
-			}	
-			free(line);	
+			}
+			free(line);
 			perror("Error");
 			continue;
 
