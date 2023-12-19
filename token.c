@@ -11,6 +11,6 @@ void tokenize(char *line, char *args[], size_t max_args)
         args[i] = token;
         i++;
         token = strtok(NULL, " ");
-    }
+   }
     args[i] = NULL;
 }
