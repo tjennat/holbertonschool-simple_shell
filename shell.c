@@ -32,6 +32,7 @@ int main(void)
 
 		tokenize(line, args, MAX_ARGS);
 		exec(args);
+		memset(args, 0, sizeof(args));
 	}
 	free(line);
 	return (0);
