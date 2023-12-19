@@ -1,10 +1,15 @@
 #include "main.h"
 
-
+/**
+ * exec - executes the input received
+ * @args: arguments
+ * @input: input
+ * Return: void
+ */
 void exec(char **args)
 {
 	char *line = NULL;
-	int status;
+	int status, statusExit;
 	pid_t childPid;
 	char *command_path;
 
@@ -33,5 +38,11 @@ void exec(char **args)
 	}
 	else
 		wait(&status);
-	free(command_path);
+	if (WIFEXITED(status))
+	{
+		statusExit = WEXITSTATUS(status);
+		if (statusExit != 0)
+
+			free(command_path);
+	}
 }
