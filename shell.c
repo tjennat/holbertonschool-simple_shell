@@ -30,7 +30,13 @@ int main(void)
 		}
 		line[bytesRead - 1] = '\0';
 
+
 		tokenize(line, args, MAX_ARGS);
+		if (args[0] != NULL && strcmp(args[0], "exit") == 0)
+		{
+			free(line);
+			exit(EXIT_SUCCESS);
+		}
 		exec(args);
 		memset(args, 0, sizeof(args));
 	}
