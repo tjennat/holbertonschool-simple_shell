@@ -1,6 +1,11 @@
 #define _GNU_SOURCE
 #include "main.h"
 
+/**
+* main - entry point
+* Return: 0 on success
+*/
+
 int main(void)
 {
 	char *line = NULL;
@@ -12,7 +17,7 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			printf("$ ");
+			printf("%s/%s$ ", getenv("USER"), getenv("PWD"));
 			fflush(stdout);
 		}
 

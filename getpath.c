@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * find_path - finds the full path of a command
+ * @command: command to find
+ *
+ * Return: full path of command, NULL if not found
+ */
+
 char *find_path(char *command)
 {
 	char *path = getenv("PATH");
@@ -9,7 +16,7 @@ char *find_path(char *command)
 
 	if (access(command, F_OK) == 0)
 	{
-		return strdup(command);
+		return (strdup(command));
 	}
 	if (path == NULL)
 	{
