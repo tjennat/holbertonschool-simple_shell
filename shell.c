@@ -17,7 +17,7 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			printf("$ ");
+			printf("%s/%s$ ", getenv("USER"), getenv("PWD"));
 			fflush(stdout);
 		}
 
