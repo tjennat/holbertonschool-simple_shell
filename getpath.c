@@ -9,7 +9,7 @@ char *find_path(char *command)
 
 	if (access(command, F_OK) == 0)
 	{
-		return strdup(command);
+		return (strdup(command));
 	}
 	if (path == NULL)
 	{
