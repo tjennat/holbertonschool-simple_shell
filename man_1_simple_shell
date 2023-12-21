@@ -45,12 +45,6 @@ File containing the function to find the path of a command.
 .BR access (2),
 .BR stat (2).
 
-.SH AUTHOR
-Théo JENNAT
-
-.SH BUGS
-Report any bugs to theo.jennat98@gmail.com
-
 .SH COPYRIGHT
 This is free and unencumbered software released into the public domain.
 
