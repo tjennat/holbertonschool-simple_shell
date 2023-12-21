@@ -1,0 +1,74 @@
+.TH SIMPLE_SHELL 1 "December 2023" "Simple Shell User Manual"
+.SH NAME
+simple\_shell \- a simple shell implementation
+
+.SH SYNOPSIS
+.B simple\_shell
+
+.SH DESCRIPTION
+.B simple\_shell
+is a basic shell that allows users to execute commands.
+
+.PP
+The shell supports the following commands:
+
+.IP \fBexit\fR
+Exit the shell.
+
+.IP \fBcommand\fR
+Execute the specified command.
+
+.SH OPTIONS
+None
+
+.SH FILES
+.IP \fBmain.h\fR
+Header file containing function prototypes.
+
+.IP \fBshell.c\fR
+Main file implementing the shell's functionality.
+
+.IP \fBtoken.c\fR
+File containing functions for tokenizing input.
+
+.IP \fBexec.c\fR
+File containing the function for executing commands.
+
+.IP \fBgetpath.c\fR
+File containing the function to find the path of a command.
+
+.SH SEE ALSO
+.BR fork (2),
+.BR execve (2),
+.BR wait (2),
+.BR getenv (3),
+.BR access (2),
+.BR stat (2).
+
+.SH AUTHOR
+Théo JENNAT
+
+.SH BUGS
+Report any bugs to theo.jennat98@gmail.com
+
+.SH COPYRIGHT
+This is free and unencumbered software released into the public domain.
+
+.SH NOTES
+This man page is a basic template, and you should update it with accurate and complete information about your shell's features, usage, and options.
+
+.SH DISCLAIMER
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+.SH SEE ALSO
+Your shell's documentation or online resources.
+
+.SH HISTORY
+This manual page was written for the simple\_shell project.
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Théo JENNAT
+
