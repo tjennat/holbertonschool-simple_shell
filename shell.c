@@ -37,12 +37,17 @@ int main(void)
 
 
 		tokenize(line, args, MAX_ARGS);
-		if (args[0] != NULL && strcmp(args[0], "exit") == 0)
+		tokenize(line, args, MAX_ARGS);
+		if (args[0] != NULL)
 		{
-			free(line);
-			exit(EXIT_SUCCESS);
+			if (strcmp(args[0], "exit") == 0)
+			{
+				free(line);
+				exit(EXIT_SUCCESS);
+			}
+			exec(args);
 		}
-		exec(args);
+
 		memset(args, 0, sizeof(args));
 	}
 	free(line);
