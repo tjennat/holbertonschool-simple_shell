@@ -20,7 +20,6 @@ int main(void)
 			printf("%s/%s$ ", getenv("USER"), getenv("PWD"));
 			fflush(stdout);
 		}
-
 		bytesRead = getline(&line, &lineSize, stdin);
 		if (bytesRead == EOF)
 		{
@@ -34,8 +33,6 @@ int main(void)
 
 		}
 		line[bytesRead - 1] = '\0';
-
-
 		tokenize(line, args, MAX_ARGS);
 		tokenize(line, args, MAX_ARGS);
 		if (args[0] != NULL)
@@ -47,7 +44,6 @@ int main(void)
 			}
 			exec(args);
 		}
-
 		memset(args, 0, sizeof(args));
 	}
 	free(line);
